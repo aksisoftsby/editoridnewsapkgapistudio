@@ -27,27 +27,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 20
+      - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 22
 
       - name: Setup Java JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
 
       - name: Install Dependencies
-        run: npm ci || npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build Web Dist
         run: npm run build
 
       - name: Setup Capacitor Android
         run: |
-          npx @capacitor/cli add android || true
+          if [ ! -d "android" ]; then
+            npx @capacitor/cli add android
+          fi
           npx @capacitor/cli sync android
 
       - name: Build Unsigned Debug APK
