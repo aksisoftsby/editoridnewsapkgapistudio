@@ -1,0 +1,6 @@
+{
+  "name": "editor.id News",
+  "description": "Aplikasi berita Indonesia terpercaya dengan sinkronisasi API WordPress editor.id, bookmark, mode gelap, notifikasi push, dan mode offline.",
+  "requestFramePermissions": ["notifications"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
